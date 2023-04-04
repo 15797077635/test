@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangjiangfei.springbootmybatis.dao.StudentScoreDao">
+    <select id="getById" resultType="com.wangjiangfei.springbootmybatis.pojo.StudentScore">
+        select * from class_score where id = #{id}
+    </select>
+
+    <select id="getAll" resultType="com.wangjiangfei.springbootmybatis.pojo.StudentScore">
+        select * from class_score
+    </select>
+
+    <select id="getBy" resultType="com.wangjiangfei.springbootmybatis.pojo.StudentScore">
+        select * from class_score
+        <where>
+            <if test="id != null and id != 0">
+                id = #{id}
+            </if>
+            <if test="score_name != null and score_name != ''" >
+                and score_name = #{score_name}
+            </if>
+        </where>
+        order by id desc
+        limit #{beginIndex},#{pageSize}
+    </select>
+
+    <insert id="insertOne" parameterType="com.wangjiangfei.springbootmybatis.pojo.StudentScore" useGeneratedKeys="true" keyProperty="id">
+        insert into class_score(score_name) values (#{score_name})
+    </insert>
+
+    <insert id="insertBatch" parameterType="com.wangjiangfei.springbootmybatis.pojo.StudentScore" useGeneratedKeys="true" keyProperty="id">
+        insert into class_score(score_name) values
+        <foreach collection="listBatch" item="item" separator=",">
+            (#{item.score_name})
+        </foreach>
+    </insert>
+    <update id="updataBatch" parameterType="java.util.List">
+        <foreach collection="listBatch" index="index" item="item" open="" close="" separator=";">
+            update class_score
+            <set>
+                score_name = #{item.score_name}
+            </set>
+    where id = #{item.id}
+        </foreach>
+    </update>
+
+    <delete id="deleteBatch">
+        <foreach collection="listBatch" index="index" open="" close="" item="item" separator=";">
+            delete from class_score where id = #{item.id}
+        </foreach>
+    </delete>
+</mapper>

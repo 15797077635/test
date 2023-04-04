@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 2.全局配置参数 -->
+    <settings>
+        <!-- 指定 MyBatis 所用日志的具体实现，未指定时将自动查找 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+<!--        &lt;!&ndash; 开启自动驼峰命名规则（camel case）映射 &ndash;&gt;-->
+<!--        <setting name="mapUnderscoreToCamelCase" value="true"/>-->
+<!--        &lt;!&ndash; 开启延迟加载开关 &ndash;&gt;-->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+<!--        &lt;!&ndash; 将积极加载改为消极加载（即按需加载）,默认值就是false &ndash;&gt;-->
+<!--        <setting name="aggressiveLazyLoading" value="false"/>-->
+<!--        &lt;!&ndash; 打开全局缓存开关（二级环境），默认值就是true &ndash;&gt;-->
+<!--        <setting name="cacheEnabled" value="true"/>-->
+    </settings>
+
+    <!-- 3.别名设置 -->
+<!--    <typeAliases>-->
+<!--        <typeAlias alias="user" type="com.pjb.mybatis.po.User"/>-->
+<!--        <typeAlias alias="teacher" type="com.pjb.mybatis.po.Teacher"/>-->
+<!--        <typeAlias alias="integer" type="java.lang.Integer"/>-->
+<!--    </typeAliases>-->
+
+    <!-- 4.类型转换器 -->
+<!--    <typeHandlers>-->
+<!--        &lt;!&ndash; 一个简单的类型转换器 &ndash;&gt;-->
+<!--        <typeHandler handler="com.pjb.mybatis.example.ExampleTypeHandler"/>-->
+<!--    </typeHandlers>-->
+
+    <!-- 5.对象工厂 -->
+<!--    <objectFactory type="com.pjb.mybatis.example.ExampleObjecFactory">-->
+<!--        &lt;!&ndash; 对象工厂注入参数 &ndash;&gt;-->
+<!--        <property name="someProperty" value="100"/>-->
+<!--    </objectFactory>-->
+
+    <!-- 6.插件 -->
+<!--    <plugins>-->
+<!--        -->
+<!--    </plugins>-->
+
+    <!-- 7.environments数据库环境配置 -->
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            &lt;!&ndash; 使用JDBC事务管理 &ndash;&gt;-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            &lt;!&ndash; 数据库连接池 &ndash;&gt;-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/apply"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="123456"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+
+    <!-- 8.加载映射文件mapper对应xml文件 -->
+    <mappers>
+        <mapper resource="mybatis/mapper/StudentScoreDao.xml"/>
+    </mappers>
+</configuration>
